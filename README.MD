@@ -9,3 +9,4 @@
 ## commands
 
 - kubectl port-forward service/nginx 28080:80
+- Run `kubectl proxy &` 
