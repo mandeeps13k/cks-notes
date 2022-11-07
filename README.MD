@@ -22,3 +22,8 @@
  
  - Open ports -> `netstat -an | grep -w LISTEN`
  - Checking used ports by services -> `cat /etc/services | grep -w 53`
+
+## Services
+
+- List All Services -> `cat /etc/services`
+- `cat /lib/systemd/system/nginx.service`
