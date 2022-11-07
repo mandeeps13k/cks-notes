@@ -39,4 +39,5 @@
 
 - `systemctl status apparmor` ; check if apparmor module is enabled `cat /sys/module/apparmor/parameters/enabled`
 - AppArmor profiles - `cat /sys/kernel/security/apparmor/profiles`
+- check appArmor status - `aa-status`
 - get capabilities of a process -> get process id using `ps -ef | grep /usr/sbin/sshd` then use `getpcaps <PID>`
