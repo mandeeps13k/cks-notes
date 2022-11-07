@@ -41,4 +41,5 @@
 - AppArmor profiles - `cat /sys/kernel/security/apparmor/profiles`
 - check appArmor status - `aa-status`
 - Load AppArmor profiles -> `apparmor_parser /etc/apparmor.d/usr.sbin.nginx-updated`
+- check loaded AppArmor profile status -> `aa-status | grep <profile-name>`
 - get capabilities of a process -> get process id using `ps -ef | grep /usr/sbin/sshd` then use `getpcaps <PID>`
