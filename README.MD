@@ -10,3 +10,10 @@
 
 - kubectl port-forward service/nginx 28080:80
 - Run `kubectl proxy &` 
+
+
+## Restrict Kernel Modules
+
+- Include information in `/etc/modprobe.d/blacklist.conf`
+- cat /etc/modprobe.d/blacklist.conf -> blacklist sctp 
+                                        blacklist dccp
