@@ -28,9 +28,13 @@
 - List All Services -> `cat /etc/services`
 - `cat /lib/systemd/system/nginx.service`
 
-## Restricting Syscalls
+## Restricting Syscalls (seccomp)
 
 - check Seccomp support -> `grep -i seccomp /boot/config-$(uname -r)`
 - check seccomp implemented on container -> `cat /proc/1/status | grep Seccomp`
 - Seccomp modes -> 1: DISABLED , 2: STRICT, 3: FILTERED
 - Seccomp in Pod Spec, `localHostProfile` path is relative to default seccomp path `/var/lib/kubelet/seccomp`
+
+## AppArmor
+
+- `systemctl status apparmor` ; check if apparmor module is enabled `cat /sys/module/apparmor/parameters/enabled`
