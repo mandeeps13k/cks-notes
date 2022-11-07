@@ -38,3 +38,4 @@
 ## AppArmor
 
 - `systemctl status apparmor` ; check if apparmor module is enabled `cat /sys/module/apparmor/parameters/enabled`
+- AppArmor profiles - `cat /sys/kernel/security/apparmor/profiles`
