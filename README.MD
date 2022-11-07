@@ -32,3 +32,4 @@
 
 - check Seccomp support -> `grep -i seccomp /boot/config-$(uname -r)`
 - check seccomp implemented on container -> `cat /proc/1/status | grep Seccomp`
+- Seccomp modes -> 1: DISABLED , 2: STRICT, 3: FILTERED
