@@ -49,3 +49,4 @@
 
 - View enabled Admission Controllers -> `kube-apiserver -h | grep enable-admissions-plugins`
 - In Kubeadm run this command inside the kube-apiserver-controlplane POD, use this command -> `kubectl exec kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | grep enable-admissions-plugins`
+- To enable and Disable plugins, use `--enable-admission-plugins` and `--disable-admission-plugins` in kube-apiserver config
