@@ -38,7 +38,7 @@
 ## AppArmor
 
 - `systemctl status apparmor` ; check if apparmor module is enabled `cat /sys/module/apparmor/parameters/enabled`
-- AppArmor profiles - `cat /sys/kernel/security/apparmor/profiles` ; `cat cat /sys/kernel/security/apparmor/profiles | grep <profile-name>`
+- AppArmor profiles - `cat /sys/kernel/security/apparmor/profiles` ; `cat /sys/kernel/security/apparmor/profiles | grep <profile-name>`
 - check appArmor status - `aa-status`
 - Load AppArmor profiles -> `apparmor_parser /etc/apparmor.d/usr.sbin.nginx-updated`
 - check loaded AppArmor profile status -> `aa-status | grep <profile-name>`
