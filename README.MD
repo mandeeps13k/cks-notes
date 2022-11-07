@@ -17,3 +17,8 @@
 - Include information in `/etc/modprobe.d/blacklist.conf`
 - cat /etc/modprobe.d/blacklist.conf -> blacklist sctp 
                                         blacklist dccp
+                                        
+ ## Network
+ 
+ - Open ports -> `netstat -an | grep -w LISTEN`
+ - Checking used ports by services -> `cat /etc/services | grep -w 53`
