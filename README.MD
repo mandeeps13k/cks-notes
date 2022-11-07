@@ -43,3 +43,9 @@
 - Load AppArmor profiles -> `apparmor_parser /etc/apparmor.d/usr.sbin.nginx-updated`
 - check loaded AppArmor profile status -> `aa-status | grep <profile-name>`
 - get capabilities of a process -> get process id using `ps -ef | grep /usr/sbin/sshd` then use `getpcaps <PID>`
+
+
+## Admission Controllers
+
+- View enabled Admission Controllers -> `kube-apiserver -h | grep enable-admissions-plugins`
+- In Kubeadm run this command inside the kube-apiserver-controlplane POD, use this command -> `kubectl exec kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | grep enable-admissions-plugins`
