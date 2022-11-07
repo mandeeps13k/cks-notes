@@ -27,3 +27,8 @@
 
 - List All Services -> `cat /etc/services`
 - `cat /lib/systemd/system/nginx.service`
+
+## Restricting Syscalls
+
+- check Seccomp support -> `grep -i seccomp /boot/config-$(uname -r)`
+- check seccomp implemented on container -> `cat /proc/1/status | grep Seccomp`
