@@ -21,7 +21,7 @@
  ## Network
  
  - Open ports -> `netstat -an | grep -w LISTEN`
- - Checking used ports by services -> `cat /etc/services | grep -w 53`
+ - Checking used ports by services -> `cat /etc/services | grep -w 53` ; `netstat -natp | grep 9090`
 
 ## Services
 
