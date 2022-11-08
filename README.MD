@@ -58,3 +58,4 @@
 ## Encrypting Secrets at Rest
 
 - Enable secret encrpytion on `kube-apiserver` by specifying flag `--encryption-provider-config` and passing a `EncryptionConfiguration` Config file.
+- Make sure `EncryptionConfiguration` File is mounted as a volume on the kube-apiserver Pod.
