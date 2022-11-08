@@ -54,3 +54,7 @@
 ## OPA - Open Policy Agent
 
 - Load Rego policy - `curl -X PUT --data-binary @sample.rego http://localhost:8181/v1/policies/samplepolicy` where `sample.rego` is the file containing policies.
+
+## Encrypting Secrets at Rest
+
+- Enable secret encrpytion on `kube-apiserver` by specifying flag `--encryption-provider-config` and passing a `EncryptionConfiguration` Config file.
