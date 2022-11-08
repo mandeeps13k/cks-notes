@@ -59,3 +59,7 @@
 
 - Enable secret encrpytion on `kube-apiserver` by specifying flag `--encryption-provider-config` and passing a `EncryptionConfiguration` Config file.
 - Make sure `EncryptionConfiguration` File is mounted as a volume on the kube-apiserver Pod.
+
+## Image Security
+
+- Use `imagePullSecrets:` in Pod Spec to use a Private Image Registry.
