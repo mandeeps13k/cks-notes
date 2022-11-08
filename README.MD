@@ -63,3 +63,6 @@
 ## Image Security
 
 - Use `imagePullSecrets:` in Pod Spec to use a Private Image Registry.
+- For restricting sources for registry, use `ImagePolicyWebhook` Admission Controller.
+- Reference the `ImagePolicyWebhook` configuration file from the file provided to the API server's command line flag `--admission-control-config-file`.
+
