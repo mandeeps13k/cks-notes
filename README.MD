@@ -68,7 +68,8 @@
 - Use trivy to scan Images 
 
 
-## Others
+## Audit
 
 - To enable Audit, use flag `--audit-log-path=/var/log/k8-audit.log` on `kube-apiserver` where the audit events are getting written to the the file `/var/log/k8-audit.log`
+- To Make use of the Audit Policy file, pass the flag `--audit-policy-file=<path-to-file>` on the `kube-apiserver`
 
