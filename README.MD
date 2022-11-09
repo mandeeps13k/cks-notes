@@ -67,3 +67,8 @@
 - Reference the `ImagePolicyWebhook` configuration file from the file provided to the API server's command line flag `--admission-control-config-file`.
 - Use trivy to scan Images 
 
+
+## Others
+
+- To enable Audit, use flag `--audit-log-path=/var/log/k8-audit.log` on `kube-apiserver` where the audit events are getting written to the the file `/var/log/k8-audit.log`
+
