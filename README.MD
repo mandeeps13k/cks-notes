@@ -111,6 +111,29 @@ volumes:
 
 - Load Rego policy - `curl -X PUT --data-binary @sample.rego http://localhost:8181/v1/policies/samplepolicy` where `sample.rego` is the file containing policies.
 
+## Falco
+
+- To create a rule first check /etc/falco/falco_rules.yaml copy the paragraph from this file with search the rule syntax which looks like below
+```
+- rule: Launch Package Management Process in Container
+  desc: Package management process ran inside container
+  condition: >
+    spawned_process
+    and container
+    and user.name != "_apt"
+    and package_mgmt_procs
+    and not package_mgmt_ancestor_procs
+    and not user_known_package_manager_in_container
+  output: >
+  Package management process launched in container (user=%user.name user_loginuid=%user.loginuid
+  command=%proc.cmdline container_id=%container.id container_name=%container.name
+image=%container.image.repository:%container.image.tag)
+  priority: ERROR
+  tags: [process, mitre_persistence]
+```
+
+- Always create a new rule according to the data in `/etc/falco/falco_rules.local.yaml`.
+- Run `service falco restart` OR `systemctl restart falco`
 
 ## Immutable File System
 
