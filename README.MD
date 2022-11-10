@@ -28,6 +28,25 @@
 - List All Services -> `cat /etc/services`
 - `cat /lib/systemd/system/nginx.service`
 
+## CIS
+
+- Always check Ownership of `/var/lib/etcd` Directory -> `chown etcd:etcd /var/lib/etcd`
+- Check permissions for Kubelet Config -> `chmod 644 /var/lib/kubelet/config.yaml`
+- Make Sure AnonymousUser is marked as `false` in kubelet config `/var/lib/kubelet/config.yaml`
+``` 
+apiVersion: kubelet.config.k8s.io/v1beta1
+authentication:
+  anonymous:
+    enabled: false
+```
+- Make Sure authorization Mode is set to Node,RBAC in `kube-apiserver`
+
+```
+--authorization-mode=Node,RBAC
+```
+
+
+
 ## Restricting Syscalls (seccomp)
 
 - check Seccomp support -> `grep -i seccomp /boot/config-$(uname -r)`
@@ -40,9 +59,14 @@
 - `systemctl status apparmor` ; check if apparmor module is enabled `cat /sys/module/apparmor/parameters/enabled`
 - AppArmor profiles - `cat /sys/kernel/security/apparmor/profiles` ; `cat /sys/kernel/security/apparmor/profiles | grep <profile-name>`
 - check appArmor status - `aa-status`
-- Load AppArmor profiles -> `apparmor_parser /etc/apparmor.d/usr.sbin.nginx-updated`
+- Load AppArmor profiles -> `apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx-updated`
 - check loaded AppArmor profile status -> `aa-status | grep <profile-name>`
 - get capabilities of a process -> get process id using `ps -ef | grep /usr/sbin/sshd` then use `getpcaps <PID>`
+- Apply AppArmor profile to a Pod by using the below Annotation on the Pod:
+```
+annotations:
+    container.apparmor.security.beta.kubernetes.io/<container_name>: <profile_ref>
+```
 
 
 ## Admission Controllers
@@ -72,4 +96,5 @@
 
 - To enable Audit Log, use flag `--audit-log-path=/var/log/k8-audit.log` on `kube-apiserver` where the audit events are getting written to the the file `/var/log/k8-audit.log`
 - To Make use of the Audit Policy file, pass the flag `--audit-policy-file=<path-to-file>` on the `kube-apiserver`
+
 
