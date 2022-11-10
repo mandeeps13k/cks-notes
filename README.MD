@@ -113,7 +113,7 @@ volumes:
 
 ## Falco
 
-- To create a rule first check /etc/falco/falco_rules.yaml copy the paragraph from this file with search the rule syntax which looks like below
+- To create a rule first check `/etc/falco/falco_rules.yaml` copy the rule from this file with search the rule syntax 
 ```
 - rule: Launch Package Management Process in Container
   desc: Package management process ran inside container
