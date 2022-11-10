@@ -94,7 +94,7 @@ annotations:
 - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
 ```
 
-- Always Check the mounts in `kube-apiserver.yaml`
+- Always Check and verify that `admission-configuration` file  has been mounted in `kube-apiserver.yaml`.
 ```
 volumeMounts:
   - mountPath: /etc/kubernetes/admission-controllers
