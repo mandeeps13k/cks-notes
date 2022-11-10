@@ -53,6 +53,16 @@ authentication:
 - check seccomp implemented on container -> `cat /proc/1/status | grep Seccomp`
 - Seccomp modes -> 1: DISABLED , 2: STRICT, 3: FILTERED
 - Seccomp in Pod Spec, `localHostProfile` path is relative to default seccomp path `/var/lib/kubelet/seccomp`
+- seccomp config in Pod Spec 
+```
+apiVersion: v1
+kind: Pod
+spec:
+  securityContext:
+     seccompProfile:
+       type: Localhost
+       localhostProfile: profiles/audit.json
+```
 
 ## AppArmor
 
