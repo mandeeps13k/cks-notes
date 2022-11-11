@@ -159,5 +159,56 @@ privileged: false
 
 - To enable Audit Log, use flag `--audit-log-path=/var/log/k8-audit.log` on `kube-apiserver` where the audit events are getting written to the the file `/var/log/k8-audit.log`
 - To Make use of the Audit Policy file, pass the flag `--audit-policy-file=<path-to-file>` on the `kube-apiserver`
+- Audit Log File -> `/etc/kubernetes/audit/polcy.yaml`
+```
+rules:
+  # Log pod changes at RequestResponse level
+  - level: RequestResponse
+    resources:
+    - group: ""
+      resources: ["pods"]
+# A catch-all rule to log all other requests at the Metadata level.
+  - level: Metadata
+    omitStages:
+      - "RequestReceived"
+# log Secret resources audits, level Metadata 
+  - level: Metadata
+     resources:
+     - group: ""
+       resources: ["secrets"]
+# for everything else don't log anything
+   - level: None
+```
+
+- kube-api configurations as maxage=30 only 5 backups path `/var/log/Kubernetes/audit/audit.log`
+
+```
+- --audit-policy-file=/etc/kubernetes/audit/polcy.yaml
+- --audit-log-path=/var/log/kubernetes/audit/audit.log
+- --audit-log-maxage=30
+- --audit-log-maxbackup=5
+```
+
+- Check the mounts for file and log if not present then add
+
+```
+volumeMounts:
+  - mountPath: /etc/kubernetes/audit/audit-policy.yaml
+    name: audit
+    readOnly: true
+  - mountPath: /var/log/kubernetes/audit/
+    name: audit-log
+    readOnly: false
+volumes:
+- name: audit
+  hostPath:
+    path: /etc/kubernetes/audit/audit-policy.yaml
+    type: File
+
+- name: audit-log
+  hostPath:
+    path: /var/log/kubernetes/audit/
+    type: DirectoryOrCreate
+```
 
 
