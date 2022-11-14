@@ -110,6 +110,7 @@ volumes:
 ## OPA - Open Policy Agent
 
 - Load Rego policy - `curl -X PUT --data-binary @sample.rego http://localhost:8181/v1/policies/samplepolicy` where `sample.rego` is the file containing policies.
+- OPA Rego Policy is configured as a `ConfigMap` Object on the Pod. Make sure to extract the configMap output in YAML to investigate the ConfigMap.
 
 ## Falco
 
