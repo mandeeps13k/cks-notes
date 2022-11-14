@@ -154,6 +154,18 @@ privileged: false
 - Reference the `ImagePolicyWebhook` configuration file from the file provided to the API server's command line flag `--admission-control-config-file`.
 - Use trivy to scan Images 
 
+## Trivy
+
+- Use this Command to get desired Output with no. of Vulnerabilities :
+```
+trivy image -s HIGH,CRITICAL nginx | grep -i total
+```
+
+- Use this Command to List Down all the Image Names along with the existing Pods :
+```
+kubectl get pods --namespace default --output=custom-columns="NAME:.metadata.name,IMAGE:.spec.containers[*].image"
+```
+
 
 ## Audit Log
 
