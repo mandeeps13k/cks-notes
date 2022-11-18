@@ -71,6 +71,7 @@ spec:
 - check appArmor status - `aa-status`
 - Load AppArmor profiles -> `apparmor_parser -q /etc/apparmor.d/usr.sbin.nginx-updated`
 - check loaded AppArmor profile status -> `aa-status | grep <profile-name>`
+- appArmor config is for every container and should be specified for container.
 - get capabilities of a process -> get process id using `ps -ef | grep /usr/sbin/sshd` then use `getpcaps <PID>`
 - Apply AppArmor profile to a Pod by using the below Annotation on the Pod:
 ```
